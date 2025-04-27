@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EquationSolver.Models.SolverBase">
+    <Position X="5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAEAAAIAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\SolverBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Models.Moivre_sSolver">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Moivre'sSolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Models.MullerSolver">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MullerSolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Models.NewtonSolver">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NewtonSolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Models.Polynomial">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Polynomial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Helpers.FormHelper">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAgAAAAAAQAgAAAAAAAAAECAQ=</HashCode>
+      <FileName>Helpers\FormHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.Helpers.PolynomialParser">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAgAAAAAAAAAAAAAAAAAAAAkAAAAAAA=</HashCode>
+      <FileName>Helpers\PolynomialParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquationSolver.MainWindow">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAQAAEABAAAAAAAAAAAAAAAAAkAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
