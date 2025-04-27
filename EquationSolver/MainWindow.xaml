@@ -37,7 +37,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient10" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient10" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z¹⁰" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -48,7 +48,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient9" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient9" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁹" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -59,7 +59,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient8" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient8" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁸" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -70,7 +70,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient7" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient7" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁷" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -81,7 +81,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient6" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient6" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁶" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -92,7 +92,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient5" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient5" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁵" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -103,7 +103,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient4" ToolTip="Дійсна та уявна частини: [-100; 100]"/>
+                 Tag="Coefficient4" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z⁴" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -114,7 +114,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient3" ToolTip="Дійсна та уявна частини: [-100; 100]" />
+                 Tag="Coefficient3" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z³" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -136,7 +136,7 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient1" ToolTip="Дійсна та уявна частини: [-100; 100]" />
+                 Tag="Coefficient1" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="Z¹" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
             <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
@@ -147,7 +147,8 @@
                  HorizontalContentAlignment="Center"
                  FontSize="16"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient0" ToolTip="Дійсна та уявна частини: [-100; 100]" />
+                 Tag="Coefficient0" ToolTip="Дійсна та уявна частини: [-100; 100]" 
+                 ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
             <TextBlock Text="= 0" FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
@@ -177,26 +178,26 @@
             <StackPanel Orientation="Horizontal" Width="256" Margin="0,5,0,0" Height="38">
                 <TextBlock Text="z1: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z1Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]"/>
+                <TextBox x:Name="Z1Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z1Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]"/>
+                <TextBox x:Name="Z1Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="257" Margin="0,5,0,0" Height="38">
                 <TextBlock Text="z2: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z2Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]"/>
+                <TextBox x:Name="Z2Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z2Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]"/>
+                <TextBox x:Name="Z2Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="257" Height="38">
                 <TextBlock Text="z3: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z3Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]"/>
+                <TextBox x:Name="Z3Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
                 <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z3Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" RenderTransformOrigin="0.527,0.512" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]"/>
+                <TextBox x:Name="Z3Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" RenderTransformOrigin="0.527,0.512" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
         </StackPanel>
 
@@ -204,7 +205,7 @@
         <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="11,5,0,5" HorizontalAlignment="Left" Width="349">
             <TextBlock Text="Точність ε (знаків після коми):" FontSize="20" VerticalAlignment="Center" />
             <TextBox x:Name="ToleranceTextBox" Width="50" Height="27" FontSize="16" Margin="10,0,0,0"
-             PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Максимально 15 знаків після коми"/>
+             PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Максимально 15 знаків після коми" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
         </StackPanel>
 
         <!-- Result Display -->
