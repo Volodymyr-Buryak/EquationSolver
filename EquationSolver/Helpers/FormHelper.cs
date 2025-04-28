@@ -11,8 +11,8 @@ namespace EquationSolver.Helpers
     public static class FormHelper
     {
         // Мінімальне та максимальне значення для початкового наближення
-        const double MIN_VALUE = -120.0;
-        const double MAX_VALUE = 120.0;
+        const double MAX_VALUE = 150.0;
+        const double MIN_VALUE = -150.0;
 
         // Максимальна та мінімальна точність
         const int MAX_DIGITS = 15;

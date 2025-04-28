@@ -38,15 +38,15 @@ namespace EquationSolver
             switch (selectedMethod)
             {
                 case "Метод Муавра":
-                    FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox);
+                    FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox, СomplexityBox);
                     break;
 
                 case "Метод Ньютона":
-                    FormHelper.EnableInputFields(Z1Real, Z1Imaginary, ToleranceTextBox);
+                    FormHelper.EnableInputFields(Z1Real, Z1Imaginary, ToleranceTextBox, СomplexityBox);
                     FormHelper.DisableInputFields(Z2Real, Z2Imaginary, Z3Real, Z3Imaginary);
                     break;
                 default:
-                    FormHelper.EnableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox);
+                    FormHelper.EnableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox, СomplexityBox);
                     break;
             }
         }
@@ -62,7 +62,6 @@ namespace EquationSolver
                 ResultTextBox.Text += $"z = {FormHelper.FormatComplex(root, precision)}\n";
             }
             ResultTextBox.Text += "\n";
-            СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
         }
 
         private void SolveButton_Click(object sender, RoutedEventArgs e)
@@ -99,6 +98,7 @@ namespace EquationSolver
                         Complex[] rootsNewton = solver.Solve(toleranceNewton, initialGuessNewton);
                         ResultTextBox.Text += $"{selectedMethod} (ε = {newtonDigits}):\n";
                         DisplayResults(solver,rootsNewton, polynomial, precision: newtonDigits);
+                        СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
 
                     case "Метод Мюллера":
@@ -114,6 +114,7 @@ namespace EquationSolver
 
                         ResultTextBox.Text += $"{selectedMethod} (ε = {mullerDigits}):\n";
                         DisplayResults(solver, rootsMuller, polynomial, precision: mullerDigits);
+                        СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
                     default:
                         throw new Exception("Оберіть метод розв'язання.");

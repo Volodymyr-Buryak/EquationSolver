@@ -6,20 +6,20 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:local="clr-namespace:EquationSolver"
         mc:Ignorable="d"
-        Title="EquationSover" Height="765" Width="1305" ResizeMode="CanMinimize"
+        Title="EquationSover" Height="710" Width="1525" ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen" >
 
-    <Grid Margin="20,20,20,0" Height="702" VerticalAlignment="Top">
+    <Grid Margin="20,0,20,0" Height="655" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="48.61"/>
+            <RowDefinition Height="Auto" MinHeight="175.6"/>
             <RowDefinition Height="Auto" MinHeight="46"/>
-            <RowDefinition Height="Auto" MinHeight="199.28"/>
-            <RowDefinition Height="Auto" MinHeight="5"/>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="93*"/>
-            <RowDefinition Height="81*"/>
+            <RowDefinition Height="Auto" MinHeight="204.6"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -32,130 +32,130 @@
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient10"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient10" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z¹⁰" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient10" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z¹⁰" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="Coefficient9"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient9" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁹" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient9" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁹" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient8"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient8" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁸" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient8" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁸" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient7"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient7" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁷" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient7" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁷" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient6"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient6" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁶" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient6" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁶" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient5"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient5" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁵" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient5" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁵" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient4"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient4" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z⁴" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient4" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z⁴" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient3"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient3" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z³" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient3" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z³" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient2"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient2" ToolTip="Дійсна та уявна частини: [-100; 100]" />
-                <TextBlock Text="Z²" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient2" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z²" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient1"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient1" ToolTip="Дійсна та уявна частини: [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="Z¹" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                 Tag="Coefficient1" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="Z¹" FontSize="19" VerticalAlignment="Center" Margin="5,0,5,0"/>
             </StackPanel>
-            <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="2"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBox x:Name="Coefficient0"
-                 Width="65" Height="30" Text="0"
+                 Width="87" Height="30" Text="0"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
-                 FontSize="16"
+                 FontSize="15"
                  PreviewTextInput="TextBox_PreviewTextInput"
-                 Tag="Coefficient0" ToolTip="Дійсна та уявна частини: [-100; 100]" 
+                 Tag="Coefficient0" ToolTip="Дійсна та уявна у діапазоні [-100; 100]" 
                  ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
-            <TextBlock Text="= 0" FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Text="= 0" FontSize="19" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
 
         <!-- Method Selection ComboBox -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10,10,10,10">
-            <TextBlock Text="Вибрати методу:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10,6,10,14">
+            <TextBlock Text="Вибрати методу:" FontSize="19" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <ComboBox x:Name="MethodSelectionComboBox" Width="200" FontSize="17" SelectionChanged="MethodSelectionComboBox_SelectionChanged">
                 <ComboBoxItem Content="Метод Муавра" HorizontalContentAlignment="Center"/>
                 <ComboBoxItem Content="Метод Ньютона" HorizontalContentAlignment="Center"/>
@@ -164,7 +164,7 @@
         </StackPanel>
 
         <!-- Initial Guess Inputs -->
-        <StackPanel Grid.Row="2" Grid.Column="0" Margin="11,10,0,10" HorizontalAlignment="Left" Width="259">
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="11,43,0,26" HorizontalAlignment="Left" Width="259" Grid.RowSpan="2">
             <UIElement.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -176,58 +176,58 @@
             <TextBlock Text="Початкове значення:" FontSize="20" Margin="0,0,0,5"/>
             <!-- z1 -->
             <StackPanel Orientation="Horizontal" Width="256" Margin="0,5,0,0" Height="38">
-                <TextBlock Text="z1: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z1Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z1Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="z1: " FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Re(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z1Real" IsEnabled="False" Width="50" Height="30" FontSize="15" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина у межах [-150; 150]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Im(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z1Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="15" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина у межах [-150; 150]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="257" Margin="0,5,0,0" Height="38">
-                <TextBlock Text="z2: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z2Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z2Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="z2: " FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Re(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z2Real" IsEnabled="False" Width="50" Height="30" FontSize="15" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина у межах [-150; 150]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Im(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z2Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="15" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина у межах [-150; 150" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="257" Height="38">
-                <TextBlock Text="z3: " FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Re(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z3Real" IsEnabled="False" Width="50" Height="30" FontSize="16" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
-                <TextBlock Text="+" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="Im(z)" FontSize="20" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBox x:Name="Z3Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="16" PreviewTextInput="TextBox_PreviewTextInput" RenderTransformOrigin="0.527,0.512" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина: [-120; 120]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="z3: " FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Re(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z3Real" IsEnabled="False" Width="50" Height="30" FontSize="15" Margin="0,0,5,0" PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Дійсна частина у межах [-150; 150]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+                <TextBlock Text="+" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBlock Text="Im(z)" FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="Z3Imaginary" IsEnabled="False" Width="50" Height="30" FontSize="15" PreviewTextInput="TextBox_PreviewTextInput" RenderTransformOrigin="0.527,0.512" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Уявна частина у межах [-150; 150]" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
             </StackPanel>
         </StackPanel>
 
-        <!-- Calculation Precision -->
-        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="11,5,0,5" HorizontalAlignment="Left" Width="349">
-            <TextBlock Text="Точність ε (знаків після коми):" FontSize="20" VerticalAlignment="Center" />
-            <TextBox x:Name="ToleranceTextBox" Width="50" Height="27" FontSize="16" Margin="10,0,0,0"
+        <!-- Precision -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="11,158,0,28" HorizontalAlignment="Left" Width="329" Grid.RowSpan="2">
+            <TextBlock Text="Точність ε (знаків після коми):" FontSize="19" VerticalAlignment="Center" />
+            <TextBox x:Name="ToleranceTextBox" Width="50" Height="27" FontSize="15" Margin="10,0,0,0"
              PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Максимально 15 знаків після коми" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
         </StackPanel>
 
         <!-- Result Display -->
-        <StackPanel Grid.Row="4" Grid.Column="0" Margin="6,10,0,5" HorizontalAlignment="Left" Width="357">
-            <TextBlock Text="Результат" FontSize="20" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="6,23,0,38" HorizontalAlignment="Left" Width="357" Grid.RowSpan="2">
+            <TextBlock Text="Результат" FontSize="19" Margin="0,0,0,5" HorizontalAlignment="Center"/>
             <TextBox  x:Name="ResultTextBox" Height="158" FontSize="15" IsReadOnly="True" TextWrapping="NoWrap" Width="355" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
         </StackPanel>
 
         <!-- Practical Speed -->
-        <StackPanel Grid.Row="6" Margin="59,8,0,33" HorizontalAlignment="Left" Width="250" Grid.RowSpan="2">
-            <TextBlock FontSize="20" Margin="0,0,0,5" HorizontalAlignment="Center"><Run Text="Практична "/><Run Language="uk-ua" Text="складність"/></TextBlock>
+        <StackPanel Grid.Row="4" Margin="58,175,0,19" HorizontalAlignment="Left" Width="250" Grid.RowSpan="3">
+            <TextBlock FontSize="19" Margin="0,0,0,5" HorizontalAlignment="Center"><Run Text="Практична "/><Run Language="uk-ua" Text="складність"/></TextBlock>
             <TextBox  x:Name="СomplexityBox" Height="30" FontSize="16" IsReadOnly="True" Width="244" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         </StackPanel>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,72,0,0" HorizontalAlignment="Center" Width="210" Height="60" VerticalAlignment="Top" Grid.RowSpan="2">
-            <Button Content="Розв’язок" Width="100" Height="40" FontSize="16" Margin="0,0,10,0" Click="SolveButton_Click"/>
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Width="240" Height="60" VerticalAlignment="Top" Margin="628,40,0,0" Grid.RowSpan="3">
+            <Button Content="Розв’язок" Width="100" Height="40" FontSize="16" Margin="0,0,40,0" Click="SolveButton_Click"/>
             <Button Content="Експорт" Width="100" Height="40" FontSize="16" Click="SaveButton_Click"/>
         </StackPanel>
         <!-- Placeholder for Graph -->
-        <oxy:PlotView x:Name="plotView1" Grid.Row="1" Margin="555,0,0,173" Grid.RowSpan="4" Height="289" VerticalAlignment="Bottom" RenderTransformOrigin="0.489,0.491" HorizontalAlignment="Left" Width="559"/>
-        <oxy:PlotView x:Name="plotView2" Grid.Row="4" Margin="533,19,0,0" Grid.RowSpan="4" Height="257" VerticalAlignment="Top" HorizontalAlignment="Left" Width="552"/>
+        <oxy:PlotView x:Name="plotView1" Grid.Row="1" Margin="492,24,0,0" RenderTransformOrigin="0.489,0.491" HorizontalAlignment="Left" Width="500" Height="400" VerticalAlignment="Top" Grid.RowSpan="4"/>
+        <oxy:PlotView x:Name="plotView2" Grid.Row="1" Margin="1008,24,0,0" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Grid.RowSpan="4"/>
 
     </Grid>
 

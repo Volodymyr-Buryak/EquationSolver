@@ -10,7 +10,6 @@ namespace EquationSolver.Models
         public override Complex[] Solve(double tolerance, params Complex[] approximation)
         {
             int n = -1;
-            IterationCount = 0;
 
             Complex a = -Polynomial.Coefficients[0];
      
@@ -48,7 +47,6 @@ namespace EquationSolver.Models
 
             for (int k = 0; k < n; k++)
             {
-                IterationCount++;
                 double angle = (phi + 2 * Math.PI * k) / n;
                 roots[k] = new Complex(rootMagnitude * Math.Cos(angle), rootMagnitude * Math.Sin(angle));
             }

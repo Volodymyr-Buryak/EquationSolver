@@ -19,9 +19,9 @@ namespace EquationSolver.Models
                 Complex fz = Polynomial.PolynomialValue(z);
                 Complex dfz = Polynomial.PolynomialDerivative(z);
 
-                if (dfz == Complex.Zero)
+                if (Complex.Abs(dfz) < 1e-15)
                 {
-                    throw new Exception("Похідна дорівнює нулю.");
+                    throw new Exception("Похідна надто мала, ризик нестабільності.");
                 }
 
                 Complex zNext = z - fz / dfz;

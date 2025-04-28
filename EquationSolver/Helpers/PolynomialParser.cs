@@ -12,6 +12,9 @@ namespace EquationSolver.Helpers
         private const double MaxValue = 100.0;
         private const double MinValue = -100.0;
 
+        // Число яке використовується для перевірки на нуль
+        private const double EpsilonThreshold = 1e-15;
+
         public static Complex[] ParseCoefficients(TextBox[] textBoxes)
         {
             if (textBoxes == null || textBoxes.Length == 0)
@@ -56,6 +59,13 @@ namespace EquationSolver.Helpers
             {
                 real = double.Parse(match.Groups[1].Value);
 
+
+                if (real != 0 && Math.Abs(real) < EpsilonThreshold)
+                {
+                    throw new PolynomialException($"Дійсна частина коефіцієнта надто мала: {real}.", text);
+                }
+
+
                 if (real < MinValue || real > MaxValue)
                 {
                     throw new PolynomialException($"Дійсна частина коефіцієнта полінома не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
@@ -72,6 +82,11 @@ namespace EquationSolver.Helpers
                 }
 
                 imaginary = double.Parse(imagPart);
+
+                if (imaginary != 0 && Math.Abs(imaginary) < EpsilonThreshold)
+                {
+                    throw new PolynomialException($"Уявна частина коефіцієнта надто мала: {imaginary}.", text);
+                }
 
                 if (imaginary < MinValue || imaginary > MaxValue)
                 {

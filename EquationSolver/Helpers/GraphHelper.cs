@@ -1,6 +1,7 @@
 ﻿using System;
 using OxyPlot;
 using OxyPlot.Wpf;
+using System.Linq;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using System.Numerics;
@@ -10,30 +11,29 @@ namespace EquationSolver.Helpers
 {
     static class GraphHelper
     {
-        // Ширина графіка
-        const int WIDTH = 500; 
-        const int HEIGHT = 500;
-        // Максимальні та мінімальні значення для осей X та Y
-        const double MAX_VALUE_X = 5.0;
-        const double MAX_VALUE_Y = 5.0;
-
-        // Мінімальні значення для осей X та Y
-        const double MIN_VALUE_X = -5.0;
-        const double MIN_VALUE_Y = -5.0;
+        private const int WIDTH = 500;
+        private const int HEIGHT = 400;
+        private const double EPS = 1e-6;
+        private const double LOG_CLAMP = 10;
 
         public static void DisplayComplexHeatmap(PlotView plotView, Polynomial polynomial)
         {
-            double[,] values = new double[WIDTH, HEIGHT];
+            double maxCoeff = polynomial.Coefficients.Max(c => c.Magnitude);
+            double R = 1.2 * (1 + maxCoeff);
+            double minX = -R, maxX = R, minY = -R, maxY = R;
 
+
+            var values = new double[WIDTH, HEIGHT];
             for (int i = 0; i < WIDTH; i++)
             {
-                double x = MIN_VALUE_X + i * (MAX_VALUE_X - MIN_VALUE_X) / (WIDTH - 1);
+                double x = minX + i * (maxX - minX) / (WIDTH - 1);
                 for (int j = 0; j < HEIGHT; j++)
                 {
-                    double y = MIN_VALUE_Y + j * (MAX_VALUE_Y - MIN_VALUE_Y) / (HEIGHT - 1);
-                    Complex z = new Complex(x, y);
-                    Complex result = polynomial.PolynomialValue(z);
-                    values[i, j] = Math.Log(1 + result.Magnitude);
+                    double y = minY + j * (maxY - minY) / (HEIGHT - 1);
+                    var z = new Complex(x, y);
+                    double mag = polynomial.PolynomialValue(z).Magnitude;
+                    double v = -Math.Log(mag + EPS);
+                    values[i, j] = Math.Min(v, LOG_CLAMP);
                 }
             }
 
@@ -42,10 +42,10 @@ namespace EquationSolver.Helpers
             {
                 for (int j = 0; j < HEIGHT; j++)
                 {
-                    maxValue = Math.Max(maxValue, values[i, j]);
+                    if (values[i, j] > maxValue)
+                        maxValue = values[i, j];
                 }
             }
-
             if (maxValue > 0)
             {
                 for (int i = 0; i < WIDTH; i++)
@@ -57,27 +57,32 @@ namespace EquationSolver.Helpers
                 }
             }
 
-            var plotModel = new PlotModel { Title = "Heatmap поліному", TitleFontSize = 20 };
+            var plotModel = new PlotModel { Title = "Heatmap поліному", TitleFontSize = 19 };
 
             plotModel.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Bottom,
-                IsZoomEnabled = false,
+                IsZoomEnabled = true,
                 IsPanEnabled = false,
-                Minimum = MIN_VALUE_X,
-                Maximum = MAX_VALUE_X,
+                Minimum = minX,
+                Maximum = maxX,
+                AbsoluteMinimum = minX,
+                AbsoluteMaximum = maxX,
                 Title = "Re(z)"
             });
 
             plotModel.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Left,
-                IsZoomEnabled = false,
+                IsZoomEnabled = true,
                 IsPanEnabled = false,
-                Minimum = MIN_VALUE_Y,
-                Maximum = MAX_VALUE_Y,
+                Minimum = minY,
+                Maximum = maxY,
+                AbsoluteMinimum = minY,
+                AbsoluteMaximum = maxY,
                 Title = "Im(z)"
             });
+
 
             plotModel.Axes.Add(new LinearColorAxis
             {
@@ -92,10 +97,10 @@ namespace EquationSolver.Helpers
 
             var heatMap = new HeatMapSeries
             {
-                X0 = MIN_VALUE_X,
-                X1 = MAX_VALUE_X,
-                Y0 = MIN_VALUE_Y,
-                Y1 = MAX_VALUE_Y,
+                X0 = minX,
+                X1 = maxX,
+                Y0 = minY,
+                Y1 = maxY,
                 Interpolate = true,
                 RenderMethod = HeatMapRenderMethod.Bitmap,
                 Data = values
@@ -107,7 +112,7 @@ namespace EquationSolver.Helpers
 
         public static void DisplayRootsGraph(PlotView plotViewRoots, Complex[] roots, int precision)
         {
-            var model = new PlotModel { Title = "Корені полінома на комплексній площині", TitleFontSize = 20 };
+            var model = new PlotModel { Title = "Корені на комплексній площині", TitleFontSize = 19 };
             var scatterSeries = new ScatterSeries
             {
                 MarkerType = MarkerType.Circle,
