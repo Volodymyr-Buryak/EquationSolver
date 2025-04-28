@@ -42,39 +42,13 @@ namespace EquationSolver.Helpers
             }
 
             input = input.Replace(" ", "").Replace(".", ",").ToLower();
-            var regex = new Regex(@"^([+-]?\d*\,?\d+)?([+-]?\d*\,?\d*i|[+-]?i)?$");
-
-            var match = regex.Match(input);
-            if (!match.Success)
-            {
-                throw new PolynomialException("Коефіцієнт полінома містить некоректне значення. Приклад валідних чисел: \n" +
-                    " - Комплексне число з реальною та уявною частинами: 1+2i\n" + " - Тільки уявна частина: +2.5i\n" +
-                    " - Тільки дійсна частина: 3 або 3.3\n" + " - Уявна одиниця: -i або i", text);
-            }
 
             double real = 0.0;
             double imaginary = 0.0;
 
-            if (!string.IsNullOrEmpty(match.Groups[1].Value))
+            if (Regex.IsMatch(input, @"^[+-]?\d*(?:\,\d+)?i$"))
             {
-                real = double.Parse(match.Groups[1].Value);
-
-
-                if (real != 0 && Math.Abs(real) < EpsilonThreshold)
-                {
-                    throw new PolynomialException($"Дійсна частина коефіцієнта надто мала: {real}.", text);
-                }
-
-
-                if (real < MinValue || real > MaxValue)
-                {
-                    throw new PolynomialException($"Дійсна частина коефіцієнта полінома не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(match.Groups[2].Value))
-            {
-                string imagPart = match.Groups[2].Value.Replace("i", "");
+                string imagPart = input.Replace("i", "");
 
                 if (string.IsNullOrEmpty(imagPart) || imagPart == "+" || imagPart == "-")
                 {
@@ -82,19 +56,61 @@ namespace EquationSolver.Helpers
                 }
 
                 imaginary = double.Parse(imagPart);
+            }
+            else
+            {
+                var regex = new Regex(@"^([+-]?\d+(?:\,\d+)?)?([+-]?\d*(?:\,\d+)?i)?$");
 
-                if (imaginary != 0 && Math.Abs(imaginary) < EpsilonThreshold)
+                var match = regex.Match(input);
+                if (!match.Success)
                 {
-                    throw new PolynomialException($"Уявна частина коефіцієнта надто мала: {imaginary}.", text);
+                    throw new PolynomialException("Коефіцієнт полінома містить некоректне значення. Приклад валідних чисел:\n" +
+                            " - Комплексне число з реальною та уявною частинами: 1+2i\n" +
+                            " - Тільки уявна частина: +2,5i\n" +
+                            " - Тільки дійсна частина: 3 або 3,3\n" +
+                            " - Уявна одиниця: -i або i", text);
                 }
 
-                if (imaginary < MinValue || imaginary > MaxValue)
+                if (!string.IsNullOrEmpty(match.Groups[1].Value))
                 {
-                    throw new PolynomialException($"Уявна частина не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
+                    real = double.Parse(match.Groups[1].Value);
                 }
+
+                if (!string.IsNullOrEmpty(match.Groups[2].Value))
+                {
+                    string imagPart = match.Groups[2].Value.Replace("i", "");
+
+                    if (string.IsNullOrEmpty(imagPart) || imagPart == "+" || imagPart == "-")
+                    {
+                        imagPart += "1";
+                    }
+
+                    imaginary = double.Parse(imagPart);
+                }
+            }
+
+            if (real != 0 && Math.Abs(real) < EpsilonThreshold)
+            {
+                throw new PolynomialException($"Дійсна частина коефіцієнта надто мала: {real}.", text);
+            }
+
+            if (real < MinValue || real > MaxValue)
+            {
+                throw new PolynomialException($"Дійсна частина коефіцієнта полінома не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
+            }
+
+            if (imaginary != 0 && Math.Abs(imaginary) < EpsilonThreshold)
+            {
+                throw new PolynomialException($"Уявна частина коефіцієнта надто мала: {imaginary}.", text);
+            }
+
+            if (imaginary < MinValue || imaginary > MaxValue)
+            {
+                throw new PolynomialException($"Уявна частина не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
             }
 
             return new Complex(real, imaginary);
         }
+
     }
 }
