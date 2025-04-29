@@ -5,22 +5,22 @@ namespace EquationSolver.Models
 {
     public class Moivre_sSolver : SolverBase
     {
-        public Moivre_sSolver(Polynomial polynomial) : base(polynomial) { }
+        public Moivre_sSolver(Equation equation) : base(equation) { }
 
         public override Complex[] Solve(double tolerance, params Complex[] approximation)
         {
             int n = -1;
 
-            Complex a = -Polynomial.Coefficients[0];
+            Complex a = -Equation.Coefficients[0];
      
-            for (int i = 1; i < Polynomial.Coefficients.Length; i++)
+            for (int i = 1; i < Equation.Coefficients.Length; i++)
             {
-                if (Polynomial.Coefficients[i].Real == 1)
+                if (Equation.Coefficients[i].Real == 1)
                 {
                     n = i;
                     break;
                 }
-                else if (Polynomial.Coefficients[i].Imaginary != 0)
+                else if (Equation.Coefficients[i].Imaginary != 0)
                 {
                     break;
                 }
@@ -31,9 +31,9 @@ namespace EquationSolver.Models
                 throw new InvalidOperationException("Не знайдено коефіцієнта зі значенням 1, щоб визначити степінь рівняння.");
             }
 
-            for (int i = n + 1; i < Polynomial.Coefficients.Length; i++)
+            for (int i = n + 1; i < Equation.Coefficients.Length; i++)
             {
-                if (Polynomial.Coefficients[i].Magnitude != 0)
+                if (Equation.Coefficients[i].Magnitude != 0)
                 {
                     throw new InvalidOperationException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю.");
                 }

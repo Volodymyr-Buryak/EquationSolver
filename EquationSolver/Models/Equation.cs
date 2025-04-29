@@ -3,11 +3,11 @@ using System.Numerics;
 
 namespace EquationSolver.Models
 {
-    public class Polynomial
+    public class Equation
     {
         public Complex[] Coefficients { get; }
 
-        public Polynomial(Complex[] coefficients)
+        public Equation(Complex[] coefficients)
         {
             if (coefficients == null || coefficients.Length == 0)
             {

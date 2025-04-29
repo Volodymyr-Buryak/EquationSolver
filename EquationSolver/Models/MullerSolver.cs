@@ -5,7 +5,7 @@ namespace EquationSolver.Models
 {
     public class MullerSolver : SolverBase
     {
-        public MullerSolver(Polynomial polynomial) : base(polynomial){ }
+        public MullerSolver(Equation equation) : base(equation) { }
 
         public override Complex[] Solve(double tolerance, params Complex[] approximation)
         {
@@ -19,9 +19,9 @@ namespace EquationSolver.Models
             {
                 IterationCount++;
 
-                Complex f0 = Polynomial.PolynomialValue(x0);
-                Complex f1 = Polynomial.PolynomialValue(x1);
-                Complex f2 = Polynomial.PolynomialValue(x2);
+                Complex f0 = Equation.PolynomialValue(x0);
+                Complex f1 = Equation.PolynomialValue(x1);
+                Complex f2 = Equation.PolynomialValue(x2);
 
                 Complex h1 = x1 - x0;
                 Complex h2 = x2 - x1;
@@ -49,7 +49,7 @@ namespace EquationSolver.Models
 
                 Complex x3 = x2 - (2 * c) / denominator;
 
-                if (Complex.Abs(x3 - x2) < tolerance || Complex.Abs(Polynomial.PolynomialValue(x3)) < tolerance)
+                if (Complex.Abs(x3 - x2) < tolerance || Complex.Abs(Equation.PolynomialValue(x3)) < tolerance)
                 {
                     return [x3];
                 }

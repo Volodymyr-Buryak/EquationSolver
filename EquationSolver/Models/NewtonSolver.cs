@@ -5,7 +5,7 @@ namespace EquationSolver.Models
 {
     public class NewtonSolver : SolverBase
     {
-        public NewtonSolver(Polynomial polynomial) : base(polynomial) { }
+        public NewtonSolver(Equation equation) : base(equation) { }
 
         public override Complex[] Solve(double tolerance, params Complex[] approximation)
         {
@@ -16,12 +16,12 @@ namespace EquationSolver.Models
             for (int i = 0; i < MaxIterations; i++)
             {
                 IterationCount++;
-                Complex fz = Polynomial.PolynomialValue(z);
-                Complex dfz = Polynomial.PolynomialDerivative(z);
+                Complex fz = Equation.PolynomialValue(z);
+                Complex dfz = Equation.PolynomialDerivative(z);
 
                 if (Complex.Abs(dfz) < 1e-15)
                 {
-                    throw new Exception("Похідна надто мала, ризик нестабільності.");
+                    throw new Exception("Похідна надто мала.");
                 }
 
                 Complex zNext = z - fz / dfz;

@@ -24,8 +24,8 @@ namespace EquationSolver
 
         private void InitializeForm()
         {
-            Complex[] complexes = PolynomialParser.ParseCoefficients(coefficientTextBoxes);
-            Polynomial polynomial = new Polynomial(complexes);
+            Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
+            Equation polynomial = new Equation(complexes);
 
             GraphHelper.DisplayComplexHeatmap(plotView1, polynomial);
             GraphHelper.DisplayRootsGraph(plotView2, [new Complex(0, 0)], 0);
@@ -51,9 +51,9 @@ namespace EquationSolver
             }
         }
 
-        private void DisplayResults(SolverBase solver, Complex[] roots, Polynomial polynomial, int precision = 5)
+        private void DisplayResults(SolverBase solver, Complex[] roots, Equation equation, int precision = 5)
         {
-            GraphHelper.DisplayComplexHeatmap(plotView1, polynomial);
+            GraphHelper.DisplayComplexHeatmap(plotView1, equation);
             GraphHelper.DisplayRootsGraph(plotView2, roots, precision);
 
             ResultTextBox.Text += $"Рівняння: {FormHelper.FormatEquationToString(coefficientTextBoxes)}\n" + "Корені:\n";
@@ -70,39 +70,39 @@ namespace EquationSolver
             {
                 SolverBase solver;
 
-                Complex[] complexes = PolynomialParser.ParseCoefficients(coefficientTextBoxes);
+                Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
 
                 if (complexes.Count(complexes => complexes != Complex.Zero) < 2)
                 {
                     throw new ArgumentException("Введіть два ненульові коефіцієнти!");
                 }
 
-                Polynomial polynomial = new Polynomial(complexes);
+                Equation equation = new Equation(complexes);
                 var selectedMethod = (MethodSelectionComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
                 switch (selectedMethod)
                 {
                     case "Метод Муавра":
-                        solver = new Moivre_sSolver(polynomial);
+                        solver = new Moivre_sSolver(equation);
                         Complex[] roots = solver.Solve();
                         ResultTextBox.Text += $"{selectedMethod}:\n";
-                        DisplayResults(solver, roots, polynomial, precision: 5);
+                        DisplayResults(solver, roots, equation, precision: 5);
                         break;
 
                     case "Метод Ньютона":
-                        solver = new NewtonSolver(polynomial);
+                        solver = new NewtonSolver(equation);
                         Complex initialGuessNewton = FormHelper.ValidateInitialApproximation(Z1Real, Z1Imaginary, "Z1");
 
                         int newtonDigits = FormHelper.ValidateTolerance(out double toleranceNewton, ToleranceTextBox);
 
                         Complex[] rootsNewton = solver.Solve(toleranceNewton, initialGuessNewton);
                         ResultTextBox.Text += $"{selectedMethod} (ε = {newtonDigits}):\n";
-                        DisplayResults(solver,rootsNewton, polynomial, precision: newtonDigits);
+                        DisplayResults(solver,rootsNewton, equation, precision: newtonDigits);
                         СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
 
                     case "Метод Мюллера":
-                        solver = new MullerSolver(polynomial);
+                        solver = new MullerSolver(equation);
 
                         Complex initialGuessMuller1 = FormHelper.ValidateInitialApproximation(Z1Real, Z1Imaginary, "Z1");
                         Complex initialGuessMuller2 = FormHelper.ValidateInitialApproximation(Z2Real, Z2Imaginary, "Z2");
@@ -113,14 +113,14 @@ namespace EquationSolver
                         Complex[] rootsMuller = solver.Solve(toleranceMuller, initialGuessMuller1, initialGuessMuller2, initialGuessMuller3);
 
                         ResultTextBox.Text += $"{selectedMethod} (ε = {mullerDigits}):\n";
-                        DisplayResults(solver, rootsMuller, polynomial, precision: mullerDigits);
+                        DisplayResults(solver, rootsMuller, equation, precision: mullerDigits);
                         СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
                     default:
                         throw new Exception("Оберіть метод розв'язання.");
                 }
             }
-            catch (PolynomialException ex)
+            catch (EquationalException ex)
             {
                 ex.Box.Background = Brushes.LightPink;
                 MessageBox.Show(ex.Message, "Помилка вводу", MessageBoxButton.OK, MessageBoxImage.Information);

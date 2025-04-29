@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace EquationSolver.Helpers
 {
-    static class PolynomialParser
+    static class EquationalParser
     {
         // Мінімальне та максимальне значення для коефіцієнтів
         private const double MaxValue = 100.0;
@@ -38,7 +38,7 @@ namespace EquationSolver.Helpers
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                throw new PolynomialException("Поліном не повинен містити пробілів або порожніх коефіцієнтів.", text);
+                throw new EquationalException("Рівняння не повинно містити порожніх коефіцієнтів або пробілів.", text);
             }
 
             input = input.Replace(" ", "").Replace(".", ",").ToLower();
@@ -64,7 +64,7 @@ namespace EquationSolver.Helpers
                 var match = regex.Match(input);
                 if (!match.Success)
                 {
-                    throw new PolynomialException("Коефіцієнт полінома містить некоректне значення. Приклад валідних чисел:\n" +
+                    throw new EquationalException("Коефіцієнт рівняння містить некоректне значення. Приклад валідних чисел:\n" +
                             " - Комплексне число з реальною та уявною частинами: 1+2i\n" +
                             " - Тільки уявна частина: +2,5i\n" +
                             " - Тільки дійсна частина: 3 або 3,3\n" +
@@ -91,22 +91,22 @@ namespace EquationSolver.Helpers
 
             if (real != 0 && Math.Abs(real) < EpsilonThreshold)
             {
-                throw new PolynomialException($"Дійсна частина коефіцієнта надто мала: {real}.", text);
+                throw new EquationalException($"Дійсна частина коефіцієнта надто мала: {real}.", text);
             }
 
             if (real < MinValue || real > MaxValue)
             {
-                throw new PolynomialException($"Дійсна частина коефіцієнта полінома не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
+                throw new EquationalException($"Дійсна частина коефіцієнта рівняння не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
             }
 
             if (imaginary != 0 && Math.Abs(imaginary) < EpsilonThreshold)
             {
-                throw new PolynomialException($"Уявна частина коефіцієнта надто мала: {imaginary}.", text);
+                throw new EquationalException($"Уявна частина коефіцієнта надто мала: {imaginary}.", text);
             }
 
             if (imaginary < MinValue || imaginary > MaxValue)
             {
-                throw new PolynomialException($"Уявна частина не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
+                throw new EquationalException($"Уявна частина не повинна перевищувати {MaxValue} або бути меншою за {MinValue}.", text);
             }
 
             return new Complex(real, imaginary);

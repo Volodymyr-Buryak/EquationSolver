@@ -80,10 +80,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Exceptions\PolynomialException.cs" />
+    <Compile Include="Exceptions\EquationalException.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\GraphHelper.cs" />
-    <Compile Include="Helpers\PolynomialParser.cs" />
+    <Compile Include="Helpers\EquationalParser.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,7 +93,7 @@
     <Compile Include="Models\Moivre%27sSolver.cs" />
     <Compile Include="Models\MullerSolver.cs" />
     <Compile Include="Models\NewtonSolver.cs" />
-    <Compile Include="Models\Polynomial.cs" />
+    <Compile Include="Models\Equation.cs" />
     <Compile Include="Models\SolverBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

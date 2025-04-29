@@ -16,9 +16,9 @@ namespace EquationSolver.Helpers
         private const double EPS = 1e-6;
         private const double LOG_CLAMP = 10;
 
-        public static void DisplayComplexHeatmap(PlotView plotView, Polynomial polynomial)
+        public static void DisplayComplexHeatmap(PlotView plotView, Equation equation)
         {
-            double maxCoeff = polynomial.Coefficients.Max(c => c.Magnitude);
+            double maxCoeff = equation.Coefficients.Max(c => c.Magnitude);
             double R = 1.2 * (1 + maxCoeff);
             double minX = -R, maxX = R, minY = -R, maxY = R;
 
@@ -31,7 +31,7 @@ namespace EquationSolver.Helpers
                 {
                     double y = minY + j * (maxY - minY) / (HEIGHT - 1);
                     var z = new Complex(x, y);
-                    double mag = polynomial.PolynomialValue(z).Magnitude;
+                    double mag = equation.PolynomialValue(z).Magnitude;
                     double v = -Math.Log(mag + EPS);
                     values[i, j] = Math.Min(v, LOG_CLAMP);
                 }
@@ -57,7 +57,7 @@ namespace EquationSolver.Helpers
                 }
             }
 
-            var plotModel = new PlotModel { Title = "Heatmap поліному", TitleFontSize = 19 };
+            var plotModel = new PlotModel { Title = "Heatmap рівняння", TitleFontSize = 19 };
 
             plotModel.Axes.Add(new LinearAxis
             {

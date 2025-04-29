@@ -3,10 +3,10 @@ using System.Windows.Controls;
 
 namespace EquationSolver.Exceptions
 {
-    public class PolynomialException : Exception
+    public class EquationalException : Exception
     {
         public TextBox Box { get; }
-        public PolynomialException(string message, TextBox box) : base(message)
+        public EquationalException(string message, TextBox box) : base(message)
         {
             Box = box;
         }
