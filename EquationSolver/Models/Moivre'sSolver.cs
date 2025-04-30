@@ -28,7 +28,7 @@ namespace EquationSolver.Models
 
             if (n == -1)
             {
-                throw new InvalidOperationException("Не знайдено коефіцієнта зі значенням 1, щоб визначити степінь рівняння.");
+                throw new InvalidOperationException("Не знайдено коефіцієнта зі значенням 1, щоб визначити степінь рівняння. Рівняння повинно бути у форматі z^n + a = 0.");
             }
 
             for (int i = n + 1; i < Equation.Coefficients.Length; i++)
