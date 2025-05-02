@@ -143,7 +143,7 @@ namespace EquationSolver.Helpers
         {
             if (string.IsNullOrEmpty(box.Text))
             {
-                throw new InvalidOperationException("Немає даних для збереження!");
+                throw new Exception("Немає даних для збереження!");
             }
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
