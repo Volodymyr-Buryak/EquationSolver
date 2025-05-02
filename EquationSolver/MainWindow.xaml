@@ -157,7 +157,7 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10,6,10,14">
             <TextBlock Text="Вибрати методу:" FontSize="19" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <ComboBox x:Name="MethodSelectionComboBox" Width="200" FontSize="17" SelectionChanged="MethodSelectionComboBox_SelectionChanged">
-                <ComboBoxItem Content="Метод Муавра" HorizontalContentAlignment="Center"/>
+                <ComboBoxItem Content="Алгебраїчний метод" HorizontalContentAlignment="Center"/>
                 <ComboBoxItem Content="Метод Ньютона" HorizontalContentAlignment="Center"/>
                 <ComboBoxItem Content="Метод Мюллера" HorizontalContentAlignment="Center"/>
             </ComboBox>

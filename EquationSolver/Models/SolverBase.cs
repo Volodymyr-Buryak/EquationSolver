@@ -6,7 +6,8 @@ namespace EquationSolver.Models
     public abstract class SolverBase
     {
         protected Equation Equation { get; } // Рівняння, яке розв'язується
-        protected virtual int MaxIterations { get; } = 100; // Максимальна кількість ітерацій
+        protected int MaxIterations { get; } = 100; // Максимальна кількість ітерацій
+        protected double DerivativeTolerance { get; } = 1e-15; // Допустиме значення для похідної
         public int IterationCount { get; protected set; } // Кількість ітерацій
         protected SolverBase(Equation equation)
         {

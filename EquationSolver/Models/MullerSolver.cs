@@ -15,7 +15,7 @@ namespace EquationSolver.Models
             Complex x1 = approximation[1];
             Complex x2 = approximation[2];
 
-            while (IterationCount < MaxIterations)
+            while (IterationCount <= MaxIterations)
             {
                 IterationCount++;
 
@@ -42,9 +42,9 @@ namespace EquationSolver.Models
 
                 Complex denominator = Complex.Abs(denominator1) > Complex.Abs(denominator2) ? denominator1 : denominator2;
 
-                if (Complex.Abs(denominator) < 1e-15)
+                if (Complex.Abs(denominator) < DerivativeTolerance)
                 {
-                    throw new Exception("Ділення на дуже мале число у методі Мюллера.");
+                    throw new InvalidOperationException("Ділення на дуже мале число у методі Мюллера.");
                 }
 
                 Complex x3 = x2 - (2 * c) / denominator;
@@ -59,7 +59,7 @@ namespace EquationSolver.Models
                 x2 = x3;
             }
 
-            throw new Exception("Метод Мюллера не збігся за вказану кількість ітерацій.");
+            throw new InvalidOperationException("Метод Мюллера не збігся.");
         }
     }
 }

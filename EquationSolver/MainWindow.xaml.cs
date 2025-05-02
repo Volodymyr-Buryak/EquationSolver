@@ -37,7 +37,7 @@ namespace EquationSolver
             var selectedMethod = (MethodSelectionComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
             switch (selectedMethod)
             {
-                case "Метод Муавра":
+                case "Алгебраїчний метод":
                     FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox, СomplexityBox);
                     break;
 
@@ -82,7 +82,7 @@ namespace EquationSolver
 
                 switch (selectedMethod)
                 {
-                    case "Метод Муавра":
+                    case "Алгебраїчний метод":
                         solver = new Moivre_sSolver(equation);
                         Complex[] roots = solver.Solve();
                         ResultTextBox.Text += $"{selectedMethod}:\n";
@@ -123,11 +123,15 @@ namespace EquationSolver
             catch (EquationalException ex)
             {
                 ex.Box.Background = Brushes.LightPink;
-                MessageBox.Show(ex.Message, "Помилка вводу", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ex.Message, "Помилка вводу", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (FormatException ex)
             {
-                MessageBox.Show(ex.Message, "Помилка вводу", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ex.Message, "Помилка вводу", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, string.Empty, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex)
             {

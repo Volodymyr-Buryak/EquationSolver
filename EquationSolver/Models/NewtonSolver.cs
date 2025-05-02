@@ -13,15 +13,15 @@ namespace EquationSolver.Models
             Complex z = approximation[0];
             Complex[] root = new Complex[1];
 
-            for (int i = 0; i < MaxIterations; i++)
+            for (int i = 0; i <= MaxIterations; i++)
             {
                 IterationCount++;
                 Complex fz = Equation.PolynomialValue(z);
                 Complex dfz = Equation.PolynomialDerivative(z);
 
-                if (Complex.Abs(dfz) < 1e-15)
+                if (Complex.Abs(dfz) < DerivativeTolerance)
                 {
-                    throw new Exception("Похідна надто мала.");
+                    throw new InvalidOperationException("Похідна надто мала.");
                 }
 
                 Complex zNext = z - fz / dfz;
@@ -34,7 +34,7 @@ namespace EquationSolver.Models
                 z = zNext;
             }
 
-            throw new Exception("Метод Ньютона не збігся.");
+            throw new InvalidOperationException("Метод Ньютона не збігся.");
         }
 
     }
