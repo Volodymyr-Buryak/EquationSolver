@@ -16,12 +16,11 @@ namespace EquationSolver.Helpers
         private const double EPS = 1e-6;
         private const double LOG_CLAMP = 10;
 
-        public static void DisplayComplexHeatmap(PlotView plotView, Equation equation)
+        public static void DisplayComplexEquation(PlotView plotView, Equation equation)
         {
             double maxCoeff = equation.Coefficients.Max(c => c.Magnitude);
             double R = 1.2 * (1 + maxCoeff);
             double minX = -R, maxX = R, minY = -R, maxY = R;
-
 
             var values = new double[WIDTH, HEIGHT];
             for (int i = 0; i < WIDTH; i++)
@@ -57,7 +56,7 @@ namespace EquationSolver.Helpers
                 }
             }
 
-            var plotModel = new PlotModel { Title = "Heatmap рівняння", TitleFontSize = 19 };
+            var plotModel = new PlotModel { Title = "Domain Coloring (модуль рівняння)", TitleFontSize = 18 };
 
             plotModel.Axes.Add(new LinearAxis
             {
@@ -83,7 +82,6 @@ namespace EquationSolver.Helpers
                 Title = "Im(z)"
             });
 
-
             plotModel.Axes.Add(new LinearColorAxis
             {
                 Position = AxisPosition.Right,
@@ -92,7 +90,7 @@ namespace EquationSolver.Helpers
                 LowColor = OxyColors.Black,
                 IsZoomEnabled = false,
                 IsPanEnabled = false,
-                Title = "log(1 + |P(z)|)"
+                Title = "-log(1 + |P(z)|)"
             });
 
             var heatMap = new HeatMapSeries

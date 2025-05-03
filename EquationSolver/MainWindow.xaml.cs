@@ -27,7 +27,7 @@ namespace EquationSolver
             Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
             Equation polynomial = new Equation(complexes);
 
-            GraphHelper.DisplayComplexHeatmap(plotView1, polynomial);
+            GraphHelper.DisplayComplexEquation(plotView1, polynomial);
             GraphHelper.DisplayRootsGraph(plotView2, [new Complex(0, 0)], 0);
             FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox);
         }
@@ -53,7 +53,7 @@ namespace EquationSolver
 
         private void DisplayResults(SolverBase solver, Complex[] roots, Equation equation, int precision = 5)
         {
-            GraphHelper.DisplayComplexHeatmap(plotView1, equation);
+            GraphHelper.DisplayComplexEquation(plotView1, equation);
             GraphHelper.DisplayRootsGraph(plotView2, roots, precision);
 
             ResultTextBox.Text += $"Рівняння: {FormHelper.FormatEquationToString(coefficientTextBoxes)}\n" + "Корені:\n";
