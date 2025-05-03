@@ -13,7 +13,7 @@ namespace EquationSolver.Helpers
     {
         private const int WIDTH = 500;
         private const int HEIGHT = 400;
-        private const double EPS = 1e-6;
+        private const double EPS = 1e-15;
         private const double LOG_CLAMP = 10;
 
         public static void DisplayComplexEquation(PlotView plotView, Equation equation)
@@ -90,7 +90,7 @@ namespace EquationSolver.Helpers
                 LowColor = OxyColors.Black,
                 IsZoomEnabled = false,
                 IsPanEnabled = false,
-                Title = "-log(1 + |f(z)|)"
+                Title = "-log(|f(z)|)"
             });
 
             var heatMap = new HeatMapSeries
@@ -107,6 +107,7 @@ namespace EquationSolver.Helpers
             plotModel.Series.Add(heatMap);
             plotView.Model = plotModel;
         }
+
 
         public static void DisplayRootsGraph(PlotView plotViewRoots, Complex[] roots, int precision)
         {
