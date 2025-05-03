@@ -90,7 +90,7 @@ namespace EquationSolver.Helpers
                 LowColor = OxyColors.Black,
                 IsZoomEnabled = false,
                 IsPanEnabled = false,
-                Title = "-log(1 + |P(z)|)"
+                Title = "-log(1 + |f(z)|)"
             });
 
             var heatMap = new HeatMapSeries
