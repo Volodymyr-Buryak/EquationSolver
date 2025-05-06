@@ -17,7 +17,7 @@ namespace EquationSolver.Models
             Coefficients = coefficients;
         }
 
-        public Complex PolynomialValue(Complex Z)
+        public Complex EquationValue(Complex Z)
         {
             Complex result = Complex.Zero;
             for (int i = 0; i < Coefficients.Length; i++)
@@ -27,7 +27,7 @@ namespace EquationSolver.Models
             return result;
         }
 
-        public Complex PolynomialDerivative(Complex Z)
+        public Complex EquationDerivative(Complex Z)
         {
             Complex result = Complex.Zero;
             for (int i = 1; i < Coefficients.Length; i++)

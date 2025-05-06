@@ -14,12 +14,15 @@ namespace EquationSolver.Helpers
         private const int WIDTH = 500;
         private const int HEIGHT = 400;
         private const double EPS = 1e-15;
-        private const double LOG_CLAMP = 10;
+        private const double LOG_CLAMP = 10.0;
+        private const double MIN_VALUE = -150.0;
+        private const double MAX_VALUE = 150.0;
+        private const double MINIMUM_AXIS_RANGE = 0.01;
 
-        public static void DisplayComplexEquation(PlotView plotView, Equation equation)
+        public static void DisplayComplexEquation(PlotView plotView, Complex[] roots, Equation equation)
         {
-            double maxCoeff = equation.Coefficients.Max(c => c.Magnitude);
-            double R = 1.2 * (1 + maxCoeff);
+            double maxRootMagnitude = roots.Max(r => r.Magnitude);
+            double R = 1.5 * (1 + maxRootMagnitude);
             double minX = -R, maxX = R, minY = -R, maxY = R;
 
             var values = new double[WIDTH, HEIGHT];
@@ -30,7 +33,7 @@ namespace EquationSolver.Helpers
                 {
                     double y = minY + j * (maxY - minY) / (HEIGHT - 1);
                     var z = new Complex(x, y);
-                    double mag = equation.PolynomialValue(z).Magnitude;
+                    double mag = equation.EquationValue(z).Magnitude;
                     double v = -Math.Log(mag + EPS);
                     values[i, j] = Math.Min(v, LOG_CLAMP);
                 }
@@ -42,7 +45,9 @@ namespace EquationSolver.Helpers
                 for (int j = 0; j < HEIGHT; j++)
                 {
                     if (values[i, j] > maxValue)
+                    {
                         maxValue = values[i, j];
+                    }
                 }
             }
             if (maxValue > 0)
@@ -56,7 +61,7 @@ namespace EquationSolver.Helpers
                 }
             }
 
-            var plotModel = new PlotModel { Title = "Domain Coloring (модуль рівняння)", TitleFontSize = 18 };
+            var plotModel = new PlotModel { Title = "Domain Coloring (модуль рівняння)", TitleFontSize = 17 };
 
             plotModel.Axes.Add(new LinearAxis
             {
@@ -67,6 +72,7 @@ namespace EquationSolver.Helpers
                 Maximum = maxX,
                 AbsoluteMinimum = minX,
                 AbsoluteMaximum = maxX,
+                MinimumRange = 0.01,
                 Title = "Re(z)"
             });
 
@@ -79,6 +85,7 @@ namespace EquationSolver.Helpers
                 Maximum = maxY,
                 AbsoluteMinimum = minY,
                 AbsoluteMaximum = maxY,
+                MinimumRange = 0.01,
                 Title = "Im(z)"
             });
 
@@ -111,7 +118,7 @@ namespace EquationSolver.Helpers
 
         public static void DisplayRootsGraph(PlotView plotViewRoots, Complex[] roots, int precision)
         {
-            var model = new PlotModel { Title = "Корені на комплексній площині", TitleFontSize = 19 };
+            var model = new PlotModel { Title = "Корені на комплексній площині", TitleFontSize = 17 };
             var scatterSeries = new ScatterSeries
             {
                 MarkerType = MarkerType.Circle,
@@ -131,11 +138,21 @@ namespace EquationSolver.Helpers
             model.Axes.Add(new OxyPlot.Axes.LinearAxis
             {
                 Position = OxyPlot.Axes.AxisPosition.Bottom,
+                IsZoomEnabled = true,
+                IsPanEnabled = true,
+                MinimumRange = MINIMUM_AXIS_RANGE,
+                AbsoluteMinimum = MIN_VALUE,
+                AbsoluteMaximum = MAX_VALUE,
                 Title = "Re(z)"
             });
             model.Axes.Add(new OxyPlot.Axes.LinearAxis
             {
                 Position = OxyPlot.Axes.AxisPosition.Left,
+                IsZoomEnabled = true,
+                IsPanEnabled = true,
+                MinimumRange = MINIMUM_AXIS_RANGE,
+                AbsoluteMinimum = MIN_VALUE,
+                AbsoluteMaximum = MAX_VALUE,
                 Title = "Im(z)"
             });
 

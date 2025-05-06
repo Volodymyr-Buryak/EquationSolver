@@ -28,14 +28,14 @@ namespace EquationSolver.Models
 
             if (n == -1)
             {
-                throw new InvalidOperationException("Не знайдено коефіцієнта зі значенням 1, щоб визначити степінь рівняння. Рівняння повинно бути у форматі z^n + a = 0.");
+                throw new FormatException("Не знайдено коефіцієнта зі значенням 1, щоб визначити степінь рівняння. Рівняння повинно бути у форматі z^n + a = 0!");
             }
 
             for (int i = n + 1; i < Equation.Coefficients.Length; i++)
             {
                 if (Equation.Coefficients[i].Magnitude != 0)
                 {
-                    throw new InvalidOperationException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю.");
+                    throw new FormatException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
                 }
             }
 

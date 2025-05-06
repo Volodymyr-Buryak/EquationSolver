@@ -19,9 +19,9 @@ namespace EquationSolver.Models
             {
                 IterationCount++;
 
-                Complex f0 = Equation.PolynomialValue(x0);
-                Complex f1 = Equation.PolynomialValue(x1);
-                Complex f2 = Equation.PolynomialValue(x2);
+                Complex f0 = Equation.EquationValue(x0);
+                Complex f1 = Equation.EquationValue(x1);
+                Complex f2 = Equation.EquationValue(x2);
 
                 Complex h1 = x1 - x0;
                 Complex h2 = x2 - x1;
@@ -44,12 +44,12 @@ namespace EquationSolver.Models
 
                 if (Complex.Abs(denominator) < DerivativeTolerance)
                 {
-                    throw new InvalidOperationException("Ділення на дуже мале число у методі Мюллера.");
+                    throw new InvalidOperationException("Ділення на дуже мале число у методі Мюллера - метод не збігся!");
                 }
 
                 Complex x3 = x2 - (2 * c) / denominator;
 
-                if (Complex.Abs(x3 - x2) < tolerance || Complex.Abs(Equation.PolynomialValue(x3)) < tolerance)
+                if (Complex.Abs(x3 - x2) < tolerance || Complex.Abs(Equation.EquationValue(x3)) < tolerance)
                 {
                     return [x3];
                 }
@@ -59,7 +59,7 @@ namespace EquationSolver.Models
                 x2 = x3;
             }
 
-            throw new InvalidOperationException("Метод Мюллера не збігся.");
+            throw new InvalidOperationException("Метод Мюллера не збігся!");
         }
     }
 }

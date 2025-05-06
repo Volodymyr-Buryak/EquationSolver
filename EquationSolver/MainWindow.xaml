@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:EquationSolver"
         mc:Ignorable="d"
         Title="EquationSover" Height="710" Width="1525" ResizeMode="CanMinimize"
-        WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen" Icon="IconApp.ico">
 
     <Grid Margin="20,0,20,0" Height="655" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -173,7 +173,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </UIElement.RenderTransform>
-            <TextBlock Text="Початкове значення:" FontSize="20" Margin="0,0,0,5"/>
+            <TextBlock Text="Початкове наближення:" FontSize="20" Margin="0,0,0,5"/>
             <!-- z1 -->
             <StackPanel Orientation="Horizontal" Width="256" Margin="0,5,0,0" Height="38">
                 <TextBlock Text="z1: " FontSize="19" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -205,7 +205,7 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="11,158,0,28" HorizontalAlignment="Left" Width="329" Grid.RowSpan="2">
             <TextBlock Text="Точність ε (знаків після коми):" FontSize="19" VerticalAlignment="Center" />
             <TextBox x:Name="ToleranceTextBox" Width="50" Height="27" FontSize="15" Margin="10,0,0,0"
-             PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Максимально 15 знаків після коми" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
+             PreviewTextInput="TextBox_PreviewTextInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Максимально від 0 до 15 знаків після коми" ToolTipService.InitialShowDelay="10"  ToolTipService.ShowDuration="3500"/>
         </StackPanel>
 
         <!-- Result Display -->
@@ -226,7 +226,7 @@
             <Button Content="Експорт" Width="100" Height="40" FontSize="16" Click="SaveButton_Click"/>
         </StackPanel>
         <!-- Placeholder for Graph -->
-        <oxy:PlotView x:Name="plotView1" Grid.Row="1" Margin="492,24,0,0" RenderTransformOrigin="0.489,0.491" HorizontalAlignment="Left" Width="500" Height="400" VerticalAlignment="Top" Grid.RowSpan="4"/>
+        <oxy:PlotView x:Name="plotView1" Grid.Row="1" Margin="492,20,0,0" RenderTransformOrigin="0.489,0.491" HorizontalAlignment="Left" Width="500" Height="400" VerticalAlignment="Top" Grid.RowSpan="4"/>
         <oxy:PlotView x:Name="plotView2" Grid.Row="1" Margin="1008,24,0,0" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Grid.RowSpan="4"/>
 
     </Grid>

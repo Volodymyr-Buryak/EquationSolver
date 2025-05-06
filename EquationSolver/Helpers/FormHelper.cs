@@ -13,6 +13,7 @@ namespace EquationSolver.Helpers
         // Мінімальне та максимальне значення для початкового наближення
         const double MAX_VALUE = 150.0;
         const double MIN_VALUE = -150.0;
+        const double MIN_VALUE_SMALL = 1e-6;
 
         // Максимальна та мінімальна точність
         const int MAX_DIGITS = 15;
@@ -42,18 +43,18 @@ namespace EquationSolver.Helpers
         {  
             tolerance = 0.0;
 
-            if (string.IsNullOrWhiteSpace(textBox.Text) || !int.TryParse(textBox.Text, out int digits) || digits <= 0)
+            if (string.IsNullOrWhiteSpace(textBox.Text) || !int.TryParse(textBox.Text, out int digits))
             {
                 textBox.Background = Brushes.LightPink;
                 textBox.Clear();
-                throw new FormatException("Введіть коректну точність.");
+                throw new FormatException("Введіть коректну точність!");
             }
 
             if (digits < MIN_DIGITS || digits > MAX_DIGITS)
             {
                 textBox.Background = Brushes.LightPink;
                 textBox.Clear();
-                throw new FormatException($"Точність повинна бути в межах від {MIN_DIGITS} до {MAX_DIGITS}. Введіть коректне значення.");
+                throw new FormatException($"Точність повинна бути в межах від {MIN_DIGITS} до {MAX_DIGITS}. Введіть коректне значення!");
             }
 
             tolerance = Math.Pow(10, -digits);
@@ -62,19 +63,18 @@ namespace EquationSolver.Helpers
 
         public static Complex ValidateInitialApproximation(TextBox realTextBox, TextBox imaginaryTextBox, string variableName)
         {
-
-            if (!double.TryParse(realTextBox.Text.Replace('.', ','), out double real) || real < MIN_VALUE || real > MAX_VALUE)
+            if (!double.TryParse(realTextBox.Text.Replace('.', ','), out double real) || real < MIN_VALUE || real > MAX_VALUE || (Math.Abs(real) < MIN_VALUE_SMALL && real != 0))
             {
                 realTextBox.Background = Brushes.LightPink;
                 realTextBox.Clear();
-                throw new FormatException($"Введіть коректне початкове значення {variableName} для реальної частини в межах від {MIN_VALUE} до {MAX_VALUE}.");
+                throw new FormatException($"Введіть коректне числове початкове значення {variableName} для дійсної частини в межах від {MIN_VALUE} до {MAX_VALUE}, яке не менше {MIN_VALUE_SMALL} за абсолютним значенням!");
             }
 
-            if (!double.TryParse(imaginaryTextBox.Text.Replace('.', ','), out double imaginary) || imaginary < MIN_VALUE || imaginary > MAX_VALUE)
+            if (!double.TryParse(imaginaryTextBox.Text.Replace('.', ','), out double imaginary) || imaginary < MIN_VALUE || imaginary > MAX_VALUE || (Math.Abs(imaginary) < MIN_VALUE_SMALL && imaginary != 0))
             {
                 imaginaryTextBox.Background = Brushes.LightPink;
                 imaginaryTextBox.Clear();
-                throw new FormatException($"Введіть коректне початкове значення {variableName} для уявної частини в межах від {MIN_VALUE} до {MAX_VALUE}.");
+                throw new FormatException($"Введіть коректне числове  початкове значення {variableName} для уявної частини в межах від {MIN_VALUE} до {MAX_VALUE}, яке не менше {MIN_VALUE_SMALL} за абсолютним значенням!");
             }
 
             return new Complex(real, imaginary);
@@ -111,9 +111,15 @@ namespace EquationSolver.Helpers
             for (int i = coefficient.Length - 1; i >= 0; i--)
             {
 
-                if (string.IsNullOrEmpty(coefficient[i].Text) || coefficient[i].Text == "0") continue;
+                if (string.IsNullOrEmpty(coefficient[i].Text) || coefficient[i].Text == "0")
+                {
+                    continue;
+                }
 
-                if (equationBuilder.Length != 0 && !coefficient[i].Text.StartsWith("-")) equationBuilder.Append("+ ");
+                if (equationBuilder.Length != 0 && !coefficient[i].Text.StartsWith("-") && !coefficient[i].Text.StartsWith("+"))
+                {
+                    equationBuilder.Append("+ ");
+                }
 
                 switch (i)
                 {
@@ -157,6 +163,7 @@ namespace EquationSolver.Helpers
             if (saveFileDialog.ShowDialog() == true)
             {
                 File.WriteAllText(saveFileDialog.FileName, box.Text);
+                box.Clear();
             }
             else
             {
