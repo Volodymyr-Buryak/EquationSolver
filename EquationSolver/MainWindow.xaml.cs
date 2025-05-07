@@ -7,6 +7,7 @@ using System.Windows.Media;
 using EquationSolver.Models;
 using EquationSolver.Helpers;
 using System.Windows.Controls;
+using System.Threading.Tasks;
 using EquationSolver.Exceptions;
 
 namespace EquationSolver
@@ -27,8 +28,8 @@ namespace EquationSolver
             Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
             Equation polynomial = new Equation(complexes);
 
-            GraphHelper.DisplayComplexEquation(plotView1, [new Complex(0, 0)], polynomial);
-            GraphHelper.DisplayRootsGraph(plotView2, [new Complex(0, 0)], 0);
+            plotView1.Model = GraphHelper.DisplayComplexEquation([new Complex(0, 0)], polynomial);
+            plotView2.Model = GraphHelper.DisplayRootsGraph([new Complex(0, 0)], 0);
             FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox);
         }
 
@@ -37,7 +38,7 @@ namespace EquationSolver
             var selectedMethod = (MethodSelectionComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
             switch (selectedMethod)
             {
-                case "Алгебраїчний метод":
+                case "Формула Муавра":
                     FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox, СomplexityBox);
                     break;
 
@@ -51,21 +52,29 @@ namespace EquationSolver
             }
         }
 
-        private void DisplayResults(Complex[] roots, Equation equation, int precision = 5)
+        private async Task DisplayResults(string selectedMethod, Complex[] roots, Equation equation, int precision = 5)
         {
-            GraphHelper.DisplayComplexEquation(plotView1, roots, equation);
-            GraphHelper.DisplayRootsGraph(plotView2, roots, precision);
+                var complexEquationGraph = await Task.Run(() => GraphHelper.DisplayComplexEquation(roots, equation));
+                var rootsGraph = await Task.Run(() => GraphHelper.DisplayRootsGraph(roots, precision));
 
-            ResultTextBox.Text += $"Рівняння: {FormHelper.FormatEquationToString(coefficientTextBoxes)}\n" + "Корені:\n";
-            foreach (Complex root in roots)
-            {
-                ResultTextBox.Text += $"z = {FormHelper.FormatComplex(root, precision)}\n";
-            }
-            ResultTextBox.Text += "\n";
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    plotView1.Model = complexEquationGraph;
+                    plotView2.Model = rootsGraph;
+                    ResultTextBox.Text += $"{selectedMethod} (precision = {precision}):\n";
+                    ResultTextBox.Text += $"Рівняння: {FormHelper.FormatEquationToString(coefficientTextBoxes)}\n" + "Корені:\n";
+                    foreach (Complex root in roots)
+                    {
+                        ResultTextBox.Text += $"z = {FormHelper.FormatComplex(root, precision)}\n";
+                    }
+                    ResultTextBox.Text += "\n";
+                });
         }
 
-        private void SolveButton_Click(object sender, RoutedEventArgs e)
+        private async void SolveButton_Click(object sender, RoutedEventArgs e)
         {
+            SaveButton.IsEnabled = false;
+            SolveButton.IsEnabled = false;
             try
             {
                 SolverBase solver;
@@ -82,11 +91,10 @@ namespace EquationSolver
 
                 switch (selectedMethod)
                 {
-                    case "Алгебраїчний метод":
+                    case "Формула Муавра":
                         solver = new Moivre_sSolver(equation);
                         Complex[] roots = solver.Solve();
-                        ResultTextBox.Text += $"{selectedMethod}:\n";
-                        DisplayResults(roots, equation, precision: 5);
+                        await DisplayResults(selectedMethod, roots, equation, precision: 5);
                         break;
 
                     case "Метод Ньютона":
@@ -96,8 +104,7 @@ namespace EquationSolver
                         int newtonDigits = FormHelper.ValidateTolerance(out double toleranceNewton, ToleranceTextBox);
 
                         Complex[] rootsNewton = solver.Solve(toleranceNewton, initialGuessNewton);
-                        ResultTextBox.Text += $"{selectedMethod} (ε = {newtonDigits}):\n";
-                        DisplayResults(rootsNewton, equation, precision: newtonDigits);
+                        await DisplayResults(selectedMethod, rootsNewton, equation, precision: newtonDigits);
                         СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
 
@@ -111,9 +118,7 @@ namespace EquationSolver
                         int mullerDigits = FormHelper.ValidateTolerance(out double toleranceMuller, ToleranceTextBox);
 
                         Complex[] rootsMuller = solver.Solve(toleranceMuller, initialGuessMuller1, initialGuessMuller2, initialGuessMuller3);
-
-                        ResultTextBox.Text += $"{selectedMethod} (ε = {mullerDigits}):\n";
-                        DisplayResults(rootsMuller, equation, precision: mullerDigits);
+                        await DisplayResults(selectedMethod, rootsMuller, equation, precision: mullerDigits);
                         СomplexityBox.Text = $"Кількість ітерацій: {solver.IterationCount}";
                         break;
                     default:
@@ -137,6 +142,11 @@ namespace EquationSolver
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                SaveButton.IsEnabled = true;
+                SolveButton.IsEnabled = true;
             }
         }
 

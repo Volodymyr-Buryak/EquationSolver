@@ -19,7 +19,7 @@ namespace EquationSolver.Helpers
         private const double MAX_VALUE = 150.0;
         private const double MINIMUM_AXIS_RANGE = 0.01;
 
-        public static void DisplayComplexEquation(PlotView plotView, Complex[] roots, Equation equation)
+        public static PlotModel DisplayComplexEquation(Complex[] roots, Equation equation)
         {
             double maxRootMagnitude = roots.Max(r => r.Magnitude);
             double R = 1.5 * (1 + maxRootMagnitude);
@@ -112,11 +112,11 @@ namespace EquationSolver.Helpers
             };
 
             plotModel.Series.Add(heatMap);
-            plotView.Model = plotModel;
+            return plotModel;
         }
 
 
-        public static void DisplayRootsGraph(PlotView plotViewRoots, Complex[] roots, int precision)
+        public static PlotModel DisplayRootsGraph(Complex[] roots, int precision)
         {
             var model = new PlotModel { Title = "Корені на комплексній площині", TitleFontSize = 17 };
             var scatterSeries = new ScatterSeries
@@ -156,7 +156,7 @@ namespace EquationSolver.Helpers
                 Title = "Im(z)"
             });
 
-            plotViewRoots.Model = model;
+            return model;
         }
     }
 }
