@@ -15,13 +15,9 @@ namespace EquationSolver.Models
      
             for (int i = 1; i < Equation.Coefficients.Length; i++)
             {
-                if (Equation.Coefficients[i].Real == 1)
+                if (Equation.Coefficients[i].Real == 1 && Equation.Coefficients[i].Imaginary == 0)
                 {
                     n = i;
-                    break;
-                }
-                else if (Equation.Coefficients[i].Imaginary != 0)
-                {
                     break;
                 }
             }
