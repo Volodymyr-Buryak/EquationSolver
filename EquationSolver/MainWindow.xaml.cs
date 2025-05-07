@@ -6,8 +6,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using EquationSolver.Models;
 using EquationSolver.Helpers;
-using System.Windows.Controls;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using EquationSolver.Exceptions;
 
 namespace EquationSolver
