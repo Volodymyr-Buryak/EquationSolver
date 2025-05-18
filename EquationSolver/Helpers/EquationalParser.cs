@@ -46,7 +46,7 @@ namespace EquationSolver.Helpers
             double real = 0.0;
             double imaginary = 0.0;
 
-            if (Regex.IsMatch(input, @"^[+-]?\d*(?:\,\d+)?i$"))
+            if (Regex.IsMatch(input, @"^[+-]?(\d+(?:\,\d+)?|)i$"))
             {
                 string imagPart = input.Replace("i", "");
 
@@ -59,7 +59,7 @@ namespace EquationSolver.Helpers
             }
             else
             {
-                var regex = new Regex(@"^([+-]?\d+(?:\,\d+)?)?([+-]?\d*(?:\,\d+)?i)?$");
+                var regex = new Regex(@"^([+-]?\d+(?:\,\d+)?)?([+-]?(\d+(?:\,\d+)?|)i)?$");
                 var match = regex.Match(input);
 
                 if (!match.Success)

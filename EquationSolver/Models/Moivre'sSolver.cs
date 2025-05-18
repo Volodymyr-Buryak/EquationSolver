@@ -20,6 +20,12 @@ namespace EquationSolver.Models
                     n = i;
                     break;
                 }
+
+                if (Equation.Coefficients[i].Magnitude != 0)
+                {
+                    throw new FormatException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
+                }
+
             }
 
             if (n == -1)

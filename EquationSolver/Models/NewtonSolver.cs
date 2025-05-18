@@ -13,8 +13,6 @@ namespace EquationSolver.Models
             Complex z = approximation[0];
             Complex[] root = new Complex[1];
 
-           
-
             for (int i = 0; i <= MaxIterations; i++)
             {
                 IterationCount++;

@@ -104,47 +104,6 @@ namespace EquationSolver.Helpers
             return $"{real} {sign} {Math.Abs(imaginary)}i";
         }
 
-        public static string FormatEquationToString(TextBox[] coefficient)
-        {
-            StringBuilder equationBuilder = new StringBuilder();
-
-            for (int i = coefficient.Length - 1; i >= 0; i--)
-            {
-
-                if (string.IsNullOrEmpty(coefficient[i].Text) || coefficient[i].Text == "0")
-                {
-                    continue;
-                }
-
-                if (equationBuilder.Length != 0 && !coefficient[i].Text.StartsWith("-") && !coefficient[i].Text.StartsWith("+"))
-                {
-                    equationBuilder.Append("+ ");
-                }
-
-                switch (i)
-                {
-                    case 0:
-                        equationBuilder.Append($"{coefficient[i].Text} ");
-                        break;
-                    case 1:
-                        equationBuilder.Append($"{coefficient[i].Text}z ");
-                        break;
-                    default:
-                        equationBuilder.Append($"{coefficient[i].Text}z^{i} ");
-                        break;
-                }
-            }
-
-            if (equationBuilder.Length == 0)
-            {
-               throw new FormatException("Рівняння порожнє або всі коефіцієнти рівні 0.");
-
-            }
-
-            equationBuilder.Append("= 0");
-            return equationBuilder.ToString();
-        }
-
         public static void SaveTextToFile( TextBox box)
         {
             if (string.IsNullOrEmpty(box.Text))

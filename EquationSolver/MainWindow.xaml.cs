@@ -62,7 +62,7 @@ namespace EquationSolver
                     plotView1.Model = complexEquationGraph;
                     plotView2.Model = rootsGraph;
                     ResultTextBox.Text += $"{selectedMethod} (precision = {precision}):\n";
-                    ResultTextBox.Text += $"Рівняння: {FormHelper.FormatEquationToString(coefficientTextBoxes)}\n" + "Корені:\n";
+                    ResultTextBox.Text += $"Корені:\n";
                     foreach (Complex root in roots)
                     {
                         ResultTextBox.Text += $"z = {FormHelper.FormatComplex(root, precision)}\n";
@@ -81,7 +81,7 @@ namespace EquationSolver
 
                 Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
 
-                if (complexes.Count(complexes => complexes != Complex.Zero) < 1)
+                if (complexes.Count(complexes => complexes != Complex.Zero) < 2)
                 {
                     throw new ArgumentException("Введіть два ненульові коефіцієнти!");
                 }
