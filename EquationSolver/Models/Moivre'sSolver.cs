@@ -3,8 +3,15 @@ using System.Numerics;
 
 namespace EquationSolver.Models
 {
+    /// <summary>
+    /// Клас реалізує метод Муавра для знаходження коренів комплексного рівняння виду z^n + a = 0.
+    /// </summary>
     public class Moivre_sSolver : SolverBase
     {
+        /// <summary>
+        /// Конструктор класу <see cref="Moivre_sSolver"/> з заданим рівнянням.
+        /// </summary>
+        /// <param name="equation">Рівняння у форматі z^n + a = 0.</param>
         public Moivre_sSolver(Equation equation) : base(equation) { }
 
         public override Complex[] Solve(double tolerance, params Complex[] approximation)
@@ -43,14 +50,15 @@ namespace EquationSolver.Models
 
             Complex[] roots = new Complex[n];
 
-            double r = a.Magnitude;
-            double phi = a.Phase;
-            double rootMagnitude = Math.Pow(r, 1.0 / n);
+            double r = a.Magnitude; // Модуль числа a
+            double phi = a.Phase; // Фаза числа a
+            double rootMagnitude = Math.Pow(r, 1.0 / n); // Модуль коренів
 
+            // Обчислення коренів за формулою Муавра
             for (int k = 0; k < n; k++)
             {
-                double angle = (phi + 2 * Math.PI * k) / n;
-                roots[k] = new Complex(rootMagnitude * Math.Cos(angle), rootMagnitude * Math.Sin(angle));
+                double angle = (phi + 2 * Math.PI * k) / n; // Кут для кожного кореня
+                roots[k] = new Complex(rootMagnitude * Math.Cos(angle), rootMagnitude * Math.Sin(angle)); // Формула Муавра: r^(1/n) * (cos((phi + 2πk)/n) + i*sin((phi + 2πk)/n))
             }
 
             return roots;

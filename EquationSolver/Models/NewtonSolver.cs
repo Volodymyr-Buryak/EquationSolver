@@ -3,8 +3,15 @@ using System.Numerics;
 
 namespace EquationSolver.Models
 {
+    /// <summary>
+    /// Реалізація методу Ньютона для чисельного розв'язання нелінійних рівнянь.
+    /// </summary>
     public class NewtonSolver : SolverBase
     {
+        /// <summary>
+        /// Конструктор класу <see cref="NewtonSolver"/> з вказаним рівнянням.
+        /// </summary>
+        /// <param name="equation">Рівняння, яке буде розв'язано методом Ньютона.</param>
         public NewtonSolver(Equation equation) : base(equation) { }
 
         public override Complex[] Solve(double tolerance, params Complex[] approximation)

@@ -8,20 +8,35 @@ using EquationSolver.Models;
 
 namespace EquationSolver.Helpers
 {
+    /// <summary>
+    /// Статичний допоміжний клас для побудови графіків комплексних рівнянь та їхніх коренів.
+    /// </summary>
     static class GraphHelper
     {
-        private const int WIDTH = 500;
-        private const int HEIGHT = 400;
-        private const double EPS = 1e-15;
-        private const double LOG_CLAMP = 10.0;
-        private const double MIN_VALUE = -150.0;
-        private const double MAX_VALUE = 150.0;
-        private const double MINIMUM_AXIS_RANGE = 0.01;
+        private const int WIDTH = 500; // Ширина графіка
+        private const int HEIGHT = 400; // Висота графіка
+        private const double EPS = 1e-15; // Епсилон для уникнення ділення на нуль
+        private const double LOG_CLAMP = 10.0; // Логарифмічне обмеження для значень
+        private const double MIN_VALUE = -150.0; // Мінімальне значення для осей
+        private const double MAX_VALUE = 150.0; // Максимальне значення для осей
+        private const double MINIMUM_AXIS_RANGE = 0.01; // Мінімальний діапазон для осей
 
+        /// <summary>
+        /// Будує графі модуля комплексного рівняння на площині.
+        /// </summary>
+        /// <param name="roots">
+        /// Масив знайдених коренів рівняння.
+        /// </param>
+        /// <param name="equation">
+        /// Об’єкт рівняння, для якого обчислюється значення f(z).
+        /// </param>
+        /// <returns>
+        /// Об’єкт PlotModel, який можна відобразити у вікні WPF.
+        /// </returns>
         public static PlotModel DisplayComplexEquation(Complex[] roots, Equation equation)
         {
             double maxRootMagnitude = roots.Max(r => r.Magnitude);
-            double R = 1.5 * (1 + maxRootMagnitude);
+            double R = 1.6 * (1 + maxRootMagnitude);
             double minX = -R, maxX = R, minY = -R, maxY = R;
 
             var values = new double[WIDTH, HEIGHT];
@@ -114,7 +129,18 @@ namespace EquationSolver.Helpers
             return plotModel;
         }
 
-
+        /// <summary>
+        /// Будує графік розташування знайдених коренів на комплексній площині.
+        /// </summary>
+        /// <param name="roots">
+        /// Масив комплексних чисел, що представляють знайдені корені.
+        /// </param>
+        /// <param name="precision">
+        /// Кількість знаків після коми, до яких округлюються координати точок.
+        /// </param>
+        /// <returns>
+        /// Об’єкт PlotModel з розташуванням коренів.
+        /// </returns>
         public static PlotModel DisplayRootsGraph(Complex[] roots, int precision)
         {
             var model = new PlotModel { Title = "Корені на комплексній площині", TitleFontSize = 17 };

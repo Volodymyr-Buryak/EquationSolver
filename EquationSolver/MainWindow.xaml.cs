@@ -23,16 +23,16 @@ namespace EquationSolver
             InitializeForm();
         }
 
+        // Метод для ініціалізації форми з початковими значеннями
         private void InitializeForm()
         {
-            Complex[] complexes = EquationalParser.ParseCoefficients(coefficientTextBoxes);
-            Equation polynomial = new Equation(complexes);
-
-            plotView1.Model = GraphHelper.DisplayComplexEquation([new Complex(0, 0)], polynomial);
+            Equation equation = new Equation([new Complex(0, 0)]);
+            plotView1.Model = GraphHelper.DisplayComplexEquation([new Complex(0, 0)], equation);
             plotView2.Model = GraphHelper.DisplayRootsGraph([new Complex(0, 0)], 0);
             FormHelper.DisableInputFields(Z1Real, Z1Imaginary, Z2Real, Z2Imaginary, Z3Real, Z3Imaginary, ToleranceTextBox);
         }
 
+        // Методля блокування вводу в залежності від вибраного методу
         private void MethodSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedMethod = (MethodSelectionComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
@@ -52,6 +52,7 @@ namespace EquationSolver
             }
         }
 
+        // Метод для відображення результатів розв'язання рівняння та побудови графіків
         private async Task DisplayResults(string selectedMethod, Complex[] roots, Equation equation, int precision = 5)
         {
                 var complexEquationGraph = await Task.Run(() => GraphHelper.DisplayComplexEquation(roots, equation));
@@ -71,6 +72,7 @@ namespace EquationSolver
                 });
         }
 
+        // Метод для обробки натискання кнопки "Розв'язати" та запуску відповідного методу розв'язання рівняння
         private async void SolveButton_Click(object sender, RoutedEventArgs e)
         {
             SaveButton.IsEnabled = false;
@@ -150,6 +152,7 @@ namespace EquationSolver
             }
         }
 
+        // Метод який обробляє подію текстових полів для очищення фону
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (sender is TextBox textBox)
@@ -158,10 +161,17 @@ namespace EquationSolver
             }
         }
 
+        // Метод для обробки натискання кнопки "Зберегти" та збереження результатів у файл
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
             {
+                MessageBoxResult result = MessageBox.Show("Після збереження файлу з результатами поле \"Результат\" буде очищено.","Підтвердження", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+
                 FormHelper.SaveTextToFile(ResultTextBox);
                 MessageBox.Show("Файл успішно збережено!", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
             }

@@ -6,6 +6,10 @@ using System.Text.RegularExpressions;
 
 namespace EquationSolver.Helpers
 {
+    /// <summary>
+    /// Статичний клас, який відповідає за парсинг коефіцієнтів рівнянь з текстових полів WPF у комплексні числа.
+    /// Також перевіряє вхідні дані на правильність формату та діапазон значень.
+    /// </summary>
     static class EquationalParser
     {
         // Мінімальне та максимальне значення для коефіцієнтів
@@ -15,6 +19,12 @@ namespace EquationSolver.Helpers
         // Число яке використовується для перевірки на нуль
         private const double EpsilonThreshold = 1e-6;
 
+        /// <summary>
+        /// Парсить масив текстових полів WPF у масив комплексних чисел.
+        /// </summary>
+        /// <param name="textBoxes">Масив текстових полів WPF, з яких зчитуються коефіцієнти.</param>
+        /// <returns>Масив комплексних чисел, що представляють коефіцієнти.</returns>
+        /// <exception cref="ArgumentException">Викидається, якщо масив текстових полів порожній або null.</exception>
         public static Complex[] ParseCoefficients(TextBox[] textBoxes)
         {
             if (textBoxes == null || textBoxes.Length == 0)
@@ -32,6 +42,8 @@ namespace EquationSolver.Helpers
             return coefficients;
         }
 
+
+        // Метод для парсингу окремого текстового поля у комплексне число
         private static Complex ParseComplex(TextBox text)
         {
             string input = text.Text;
@@ -41,16 +53,30 @@ namespace EquationSolver.Helpers
                 throw new EquationalException("Рівняння не повинно містити порожніх коефіцієнтів або пробілів!", text);
             }
 
-            input = input.Replace(" ", "").Replace(".", ",");
+            input = input.Replace(".", ",").Trim();
 
             double real = 0.0;
             double imaginary = 0.0;
 
-            if (Regex.IsMatch(input, @"^[+-]?(\d+(?:\,\d+)?|)i$"))
+            // Перевірка на уявну одиницю
+            if (Regex.IsMatch(input, @"^\-?((0|[1-9]\d*)(\,\d+)?|)i$"))
             {
                 string imagPart = input.Replace("i", "");
 
-                if (string.IsNullOrEmpty(imagPart) || imagPart == "+" || imagPart == "-")
+                if (imagPart.StartsWith("+"))
+                {
+                    throw new EquationalException("Некоректне значення коефіцієнта рівняння. Перевірте формат введеного числа.\n" +
+                    "Приклади коректних форматів:\n" +
+                    " - Комплексне число (дійсна + уявна частина): 1+i\n або -0.1-0.2i" +
+                    " - Тільки уявна частина: 2.5i або -2,5i\n" +
+                    " - Тільки дійсна частина: 3 або 3.3 або -3,3\n" +
+                    " - Уявна одиниця: i або -i", text);
+                }
+
+                if (string.IsNullOrEmpty(imagPart) || imagPart == "-" )
+                {
+                    imagPart += "1";
+                } else if (imagPart == string.Empty)
                 {
                     imagPart += "1";
                 }
@@ -59,16 +85,18 @@ namespace EquationSolver.Helpers
             }
             else
             {
-                var regex = new Regex(@"^([+-]?\d+(?:\,\d+)?)?([+-]?(\d+(?:\,\d+)?|)i)?$");
+                // Перевірка на комплексне число з дійсною та уявною частинами
+                var regex = new Regex(@"^(\-?(0|[1-9]\d*)(\,\d+)?)([+-]((0|[1-9]\d*)(\,\d+)?|)i)?$");
                 var match = regex.Match(input);
 
                 if (!match.Success)
                 {
-                    throw new EquationalException("Коефіцієнт рівняння містить некоректне значення. Приклад валідних чисел:\n" +
-                            " - Комплексне число з реальною та уявною частинами: 1+2i\n" +
-                            " - Тільки уявна частина: 2,5i\n" +
-                            " - Тільки дійсна частина: 3 або 3,3\n" +
-                            " - Уявна одиниця: -i або i", text);
+                    throw new EquationalException("Некоректне значення коефіцієнта рівняння. Перевірте формат введеного числа. " +
+                     "Приклади коректних форматів:\n" +
+                     " - Комплексне число (дійсна + уявна частина): 1+i або -0.1-0.2i\n"+
+                     " - Тільки уявна частина: 2.5i або -2,5i\n" +
+                     " - Тільки дійсна частина: 3 ; 3.3 ; -3,3\n" +
+                     " - Уявна одиниця: i або -i", text);
                 }
 
                 if (!string.IsNullOrEmpty(match.Groups[1].Value))
@@ -76,9 +104,9 @@ namespace EquationSolver.Helpers
                     real = double.Parse(match.Groups[1].Value);
                 }
 
-                if (!string.IsNullOrEmpty(match.Groups[2].Value))
+                if (!string.IsNullOrEmpty(match.Groups[4].Value))
                 {
-                    string imagPart = match.Groups[2].Value.Replace("i", "");
+                    string imagPart = match.Groups[4].Value.Replace("i", "");
 
                     if (string.IsNullOrEmpty(imagPart) || imagPart == "+" || imagPart == "-")
                     {
@@ -96,7 +124,7 @@ namespace EquationSolver.Helpers
 
             if (real < MinValue || real > MaxValue)
             {
-                throw new EquationalException($"Дійсна частина коефіцієнта рівняння не повинна перевищувати {MaxValue} або бути меншою за {MinValue}!", text);
+                throw new EquationalException($"Дійсна частина коефіцієнта рівняння не повинна перевищувати {MinValue} або бути меншою за {MaxValue}!", text);
             }
 
             if (imaginary != 0 && Math.Abs(imaginary) < EpsilonThreshold)
@@ -106,7 +134,7 @@ namespace EquationSolver.Helpers
 
             if (imaginary < MinValue || imaginary > MaxValue)
             {
-                throw new EquationalException($"Уявна частина не повинна перевищувати {MaxValue}i або бути меншою за {MinValue}i!", text);
+                throw new EquationalException($"Уявна частина не повинна перевищувати {MinValue}i або бути меншою за {MaxValue}i!", text);
             }
 
             return new Complex(real, imaginary);
