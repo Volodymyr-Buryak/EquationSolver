@@ -24,7 +24,7 @@ namespace EquationSolver.Models
         protected double DerivativeTolerance { get; } = 1e-15;
 
         /// <summary>
-        /// Кількість ітерацій, які були виконані під час останнього виклику методу <see cref="Solve"/>.
+        /// Кількість ітерацій, які були виконані під час виклику методу <see cref="Solve"/>.
         /// </summary>
         public int IterationCount { get; protected set; }
 
