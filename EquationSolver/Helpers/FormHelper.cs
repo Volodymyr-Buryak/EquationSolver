@@ -106,7 +106,7 @@ namespace EquationSolver.Helpers
                 throw new FormatException($"Введіть коректне числове початкове значення {variableName} для дійсної частини в межах від {MIN_VALUE} до {MAX_VALUE}, яке не менше {MIN_VALUE_SMALL} за абсолютним значенням!");
             }
 
-            if (regex.IsMatch(imaginaryText) || zerosRegex.IsMatch(realText) || imaginaryText.StartsWith("+"))
+            if (regex.IsMatch(imaginaryText) || zerosRegex.IsMatch(imaginaryText) || imaginaryText.StartsWith("+"))
             {
                 imaginaryTextBox.Background = Brushes.LightPink;
                 imaginaryTextBox.Clear();
