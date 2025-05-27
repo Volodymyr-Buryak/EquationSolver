@@ -16,13 +16,13 @@ namespace EquationSolver.Helpers
     public static class FormHelper
     {
         // Мінімальне та максимальне значення для початкового наближення
-        const double MAX_VALUE = 150.0;
-        const double MIN_VALUE = -150.0;
-        const double MIN_VALUE_SMALL = 1e-6;
+        private const double MAX_VALUE = 150.0;
+        private const double MIN_VALUE = -150.0;
+        private const double MIN_VALUE_SMALL = 1e-6;
 
         // Максимальна та мінімальна точність
-        const int MAX_DIGITS = 15;
-        const int MIN_DIGITS = 1;
+        private const int MAX_DIGITS = 15;
+        private const int MIN_DIGITS = 1;
 
         /// <summary>
         /// Деактивує текстові поля, роблячи їх неактивними та сірими. Також очищує їхній вміст.
