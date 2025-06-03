@@ -58,6 +58,7 @@ namespace EquationSolver.Helpers
             double real = 0.0;
             double imaginary = 0.0;
 
+            
             // Перевірка на уявну одиницю
             if (Regex.IsMatch(input, @"^\-?((0|[1-9]\d*)(\,\d+)?|)i$"))
             {
@@ -115,6 +116,23 @@ namespace EquationSolver.Helpers
 
                     imaginary = double.Parse(imagPart);
                 }
+            }
+
+            static int GetDecimalPlaces(decimal value)
+            {
+                int[] bits = decimal.GetBits(value);
+                int scale = (bits[3] >> 16) & 0xFF;
+                return scale;
+            }
+
+            if (GetDecimalPlaces((decimal)real) > 7)
+            {
+                throw new EquationalException("Дійсна частина коефіцієнта має містити не більше 7 знаків після коми!", text);
+            }
+
+            if (GetDecimalPlaces((decimal)imaginary) > 7)
+            {
+                throw new EquationalException("Уявна частина коефіцієнта має містити не більше 7 знаків після коми!", text);
             }
 
             if (real != 0 && Math.Abs(real) < EpsilonThreshold)

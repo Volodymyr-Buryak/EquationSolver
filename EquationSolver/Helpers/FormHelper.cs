@@ -127,6 +127,27 @@ namespace EquationSolver.Helpers
                 throw new FormatException($"Введіть коректне числове  початкове значення {variableName} для уявної частини в межах від {MIN_VALUE} до {MAX_VALUE}, яке не менше {MIN_VALUE_SMALL} за абсолютним значенням!");
             }
 
+            static int GetDecimalPlaces(decimal value)
+            {
+                int[] bits = decimal.GetBits(value);
+                int scale = (bits[3] >> 16) & 0xFF;
+                return scale;
+            }
+
+            if (GetDecimalPlaces((decimal)real) > 7)
+            {
+                realTextBox.Background = Brushes.LightPink;
+                realTextBox.Clear();
+                throw new FormatException($"Дійсна частина {variableName} має містити не більше 7 знаків після коми.");
+            }
+
+            if (GetDecimalPlaces((decimal)imaginary) > 7)
+            {
+                realTextBox.Background = Brushes.LightPink;
+                realTextBox.Clear();
+                throw new FormatException($"Дійсна частина {variableName} має містити не більше 7 знаків після коми.");
+            }
+
             return new Complex(real, imaginary);
         }
 
