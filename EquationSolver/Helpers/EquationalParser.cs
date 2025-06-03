@@ -118,19 +118,25 @@ namespace EquationSolver.Helpers
                 }
             }
 
-            static int GetDecimalPlaces(decimal value)
+            static int GetDecimalPlaces(double number)
             {
-                int[] bits = decimal.GetBits(value);
-                int scale = (bits[3] >> 16) & 0xFF;
-                return scale;
+                string numberStr = number.ToString();
+                int decimalPointIndex = numberStr.IndexOf(',');
+
+                if (decimalPointIndex == -1 || decimalPointIndex == numberStr.Length - 1)
+                {
+                    return 0;
+                }
+                 
+                return numberStr.Length - decimalPointIndex - 1;
             }
 
-            if (GetDecimalPlaces((decimal)real) > 7)
+            if (GetDecimalPlaces(real) > 7)
             {
                 throw new EquationalException("Дійсна частина коефіцієнта має містити не більше 7 знаків після коми!", text);
             }
 
-            if (GetDecimalPlaces((decimal)imaginary) > 7)
+            if (GetDecimalPlaces(imaginary) > 7)
             {
                 throw new EquationalException("Уявна частина коефіцієнта має містити не більше 7 знаків після коми!", text);
             }
