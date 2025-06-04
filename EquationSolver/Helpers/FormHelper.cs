@@ -149,9 +149,9 @@ namespace EquationSolver.Helpers
 
             if (GetDecimalPlaces(imaginary) > 7)
             {
-                realTextBox.Background = Brushes.LightPink;
-                realTextBox.Clear();
-                throw new FormatException($"Дійсна частина {variableName} має містити не більше 7 знаків після коми.");
+                imaginaryTextBox.Background = Brushes.LightPink;
+                imaginaryTextBox.Clear();
+                throw new FormatException($"Уявна частина {variableName} має містити не більше 7 знаків після коми.");
             }
 
             return new Complex(real, imaginary);

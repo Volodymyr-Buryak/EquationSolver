@@ -177,7 +177,7 @@ namespace EquationSolver
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ex.Message, "Увага", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
