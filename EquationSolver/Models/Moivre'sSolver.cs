@@ -30,7 +30,7 @@ namespace EquationSolver.Models
 
                 if (Equation.Coefficients[i].Magnitude != 0)
                 {
-                    throw new FormatException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
+                    throw new FormatException("Рівняння повинно бути у форматі z^n +/- a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
                 }
 
             }
@@ -44,7 +44,7 @@ namespace EquationSolver.Models
             {
                 if (Equation.Coefficients[i].Magnitude != 0)
                 {
-                    throw new FormatException("Рівняння повинно бути у форматі z^n + a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
+                    throw new FormatException("Рівняння повинно бути у форматі z^n +/- a = 0. Інші коефіцієнти повинні дорівнювати нулю!");
                 }
             }
 
